@@ -31,7 +31,7 @@
 - PHP가 설치된 웹 서버 (Apache / Nginx)
 - MySQL 데이터베이스 서버
 
-### 2. 데이터베이스 설정
+### 2. 데이터베이스 테이블 생성
 `schema.sql` 파일을 실행하여 데이터베이스와 테이블을 생성합니다.
 ```bash
 mysql -u [username] -p < schema.sql
@@ -44,13 +44,12 @@ mysql -u [username] -p < schema.sql
    cp config.sample.php config.php
    ```
 3. `config.php` 파일을 열어 자신의 DB 환경에 맞게 수정합니다.
-   ```php
-   define('DB_HOST', 'localhost');
-   define('DB_USER', 'your_user');
-   define('DB_PASS', 'your_pass');
-   define('DB_NAME', 'POLL');
-   define('ADMIN_PASS', 'admin_password_here');
-   ```
+
+### 4. 샘플 데이터 삽입 (선택 사항)
+테스트를 위해 미리 준비된 50여 건의 샘플 데이터를 삽입하고 싶다면 `sample_data.sql`을 실행하세요.
+```bash
+mysql -u [username] -p < sample_data.sql
+```
 
 ## 📁 프로젝트 구조
 
@@ -61,6 +60,7 @@ poll_app/
 ├── config.sample.php  # 환경 설정 템플릿
 ├── index.php          # 설문조사 메인 화면
 ├── schema.sql         # DB 테이블 스키마
+├── sample_data.sql    # 테스트용 샘플 데이터셋
 ├── scripts.js         # 프론트엔드 공통 로직
 ├── styles.css         # 전체 스타일링 (모던 대시보드 포함)
 └── submit.php         # 피드백 제출 처리 라이브러리
